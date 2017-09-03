@@ -1,0 +1,31 @@
+.category-tag{
+        background: rgba(49, 126, 172, 0.9);	
+        padding:4px;
+        margin:5px;
+        border-radius: 5px;
+        display: inline-block;
+        color: white
+}
+
+.preview-body{
+	margin: 10px 0px;
+}
+
+.bottom-link{
+   position:absolute;
+   bottom:0;
+   left:0;
+}
+
+.post-thumb{
+	width:100%;
+}
+
+.comments-form{
+    max-width: 50%;
+}
+
+.blog-content{
+
+}
+
