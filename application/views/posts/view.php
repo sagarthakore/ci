@@ -29,18 +29,34 @@
     </table>
 </div>
 <hr>
+<div class="comments-area">
+    <h3>Comments</h3>
+    <?php if($comments) : ?>
+        <?php foreach($comments as $comment) : ?>
+            <div>
+                <p><span class="text-primary"><strong><?php echo $comment['name']; ?></strong></span><br/><?php echo $comment['body']; ?></p>
+            </div>
+        <?php endforeach; ?>
+    <?php else : ?>
+        <div class="alert alert-warning">
+            <p align="center">No Comments Entered</p>
+        </div>
+    <?php endif; ?>
+</div>
+<hr>
 <h3>Add Comments</h3>
+<?php echo validation_errors(); ?>
 <div class="comments-form">
 <?php echo form_open('comments/create/'.$post['id']); ?>
-	<div>
+	<div class="form-group">
 		<label>Name</label>
 		<input type="text" name="name" class="form-control">
 	</div>
-	<div>
+	<div class="form-group">
 		<label>Email</label>
 		<input type="text" name="email" class="form-control">
 	</div>
-	<div>
+	<div class="form-group">
 		<label>Body</label>
 		<textarea name="body" class="form-control"></textarea>
 	</div>
