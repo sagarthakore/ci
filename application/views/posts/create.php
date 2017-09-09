@@ -22,6 +22,5 @@
   <label>Upload Image</label>
   <input type="file" name="userfile" size="20">
   </div>
-  <hr>
   <button type="submit" style="margin-right: 5px" class="btn btn-default">Submit</button>
 </form>
