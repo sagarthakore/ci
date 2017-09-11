@@ -56,3 +56,7 @@ a.pagination-link{
     border: 1px #cccccc solid;
     border-radius: 7px;
 }
+
+.create-form{
+    max-width: 50%;
+}
