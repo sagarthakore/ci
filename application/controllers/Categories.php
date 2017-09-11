@@ -15,7 +15,7 @@
         public function create(){
 
             // Check login
-            if(!$this->session->user_data('logged_in')){
+            if(!$this->session->userdata('logged_in')){
                 redirect('users/login');
             }
 

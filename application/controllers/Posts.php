@@ -89,7 +89,7 @@ class Posts extends CI_Controller{
 
     public function delete($id){
         // Check login
-        if(!$this->session->user_data('logged_in')){
+        if(!$this->session->userdata('logged_in')){
             redirect('users/login');
         }
 
@@ -103,7 +103,7 @@ class Posts extends CI_Controller{
 
     public function edit($slug){
         // Check login
-        if(!$this->session->user_data('logged_in')){
+        if(!$this->session->userdata('logged_in')){
             redirect('users/login');
         }
 
@@ -130,7 +130,7 @@ class Posts extends CI_Controller{
     public function update(){
 
         // Check login
-        if(!$this->session->user_data('logged_in')){
+        if(!$this->session->userdata('logged_in')){
             redirect('users/login');
         }
 
