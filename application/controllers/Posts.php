@@ -1,10 +1,22 @@
 <?php
 class Posts extends CI_Controller{
-    public function index(){
+    public function index($offset = 0){
+
+        // Pagination Config
+        $config['base_url'] = base_url() . 'posts/index/';
+        $this->db->where('status', 1);
+        $this->db->from('posts');
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 5;
+        $config['uri_segment'] = 3;
+        $config['attributes'] = array('class' => 'pagination-link');
+
+        // Init Pagination
+        $this->pagination->initialize($config);
 
         $data['title'] = 'Latest Posts';
 
-        $data['posts'] = $this->post_model->get_posts();
+        $data['posts'] = $this->post_model->get_posts(FALSE, $config['per_page'], $offset);
 
         $this->load->view('templates/header');
         $this->load->view('posts/index', $data);
@@ -30,6 +42,12 @@ class Posts extends CI_Controller{
     }
 
     public function create(){
+
+        // Check login
+        if(!$this->session->user_data('logged_in')){
+            redirect('users/login');
+        }
+
         $data['title'] = 'Create Post';
 
         $data['categories'] = $this->post_model->get_categories();
@@ -70,6 +88,11 @@ class Posts extends CI_Controller{
     }
 
     public function delete($id){
+        // Check login
+        if(!$this->session->user_data('logged_in')){
+            redirect('users/login');
+        }
+
         $this->post_model->delete_post($id);
 
         // Set message
@@ -79,7 +102,17 @@ class Posts extends CI_Controller{
     }
 
     public function edit($slug){
+        // Check login
+        if(!$this->session->user_data('logged_in')){
+            redirect('users/login');
+        }
+
         $data['post'] = $this->post_model->get_posts($slug);
+
+        // Check user
+        if($this->session->userdata('user_id') != $this->post_model->get_posts($slug)['user_id']){
+            redirect('posts');
+        }
 
         $data['categories'] = $this->post_model->get_categories();
 
@@ -95,6 +128,12 @@ class Posts extends CI_Controller{
     }
 
     public function update(){
+
+        // Check login
+        if(!$this->session->user_data('logged_in')){
+            redirect('users/login');
+        }
+
         $this->post_model->update_post();
 
         // Set message

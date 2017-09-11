@@ -14,20 +14,22 @@
         </td>
     </tr>
 </table>
-<div  style="margin-bottom: 20px" align="center">
-    <table>
-        <tr>
-            <td>
-                <a class="btn btn-xs btn-default pull-left inline-block" style="margin-right: 5px;" href="<?php echo base_url();?>posts/edit/<?php echo $post['slug']; ?>">Edit</a>
-            </td>
-            <td>
-                <?php echo form_open('/posts/delete/'.$post['id']); ?>
-                <input type="submit" value="Delete" class="btn btn-xs btn-danger pull-right inline-block">
-                </form>
-            </td>
-        </tr>
-    </table>
-</div>
+<?php if($this->session->userdata('user_id') == $post['user_id']): ?>
+    <div  style="margin-bottom: 20px" align="center">
+        <table>
+            <tr>
+                <td>
+                    <a class="btn btn-xs btn-default pull-left inline-block" style="margin-right: 5px;" href="<?php echo base_url();?>posts/edit/<?php echo $post['slug']; ?>">Edit</a>
+                </td>
+                <td>
+                    <?php echo form_open('/posts/delete/'.$post['id']); ?>
+                    <input type="submit" value="Delete" class="btn btn-xs btn-danger pull-right inline-block">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+<?php endif; ?>
 <hr>
 <div class="comments-area">
     <h3>Comments</h3>

@@ -5,7 +5,12 @@
             $this->load->database();
         }
 
-        public function get_posts($slug = FALSE){
+        public function get_posts($slug = FALSE, $limit = FALSE, $offset = FALSE){
+
+            if($limit){
+                $this->db->limit($limit, $offset);
+            }
+
             if($slug === FALSE){
                 $this->db->order_by('posts.id', 'DESC');
                 $this->db->where('posts.status', 1);
@@ -27,6 +32,7 @@
                     'body' => $this->input->post('body'),
                     'status' => 1,
                     'category_id' => $this->input->post('category_id'),
+                    'user_id' => $this->session->user_data('user_id'),
                     'post_image' => $post_image
                 );
 
