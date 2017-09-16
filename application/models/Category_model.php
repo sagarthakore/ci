@@ -24,4 +24,13 @@
             return $query->row();
         }
 
+        public function delete_category($category_id){
+            $this->db->where('id', $category_id);
+            $data = array(
+                'status' => 0
+            );
+            $this->db->update('categories', $data);
+            return true;
+        }
+
     }

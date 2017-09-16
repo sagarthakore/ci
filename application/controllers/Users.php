@@ -53,6 +53,8 @@
                     $user_data = array(
                         'user_id' => $user_id,
                         'username' => $username,
+                        'name' => $this->user_model->get_user_name($user_id),
+                        'email' => $this->user_model->get_user_email($user_id),
                         'logged_in' => true
                     );
 

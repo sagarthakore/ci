@@ -36,6 +36,16 @@
             }
         }
 
+        public function delete($category_id){
+            //Add check-admin logic here
+
+            $this->category_model->delete_category($category_id);
+
+            // Set message
+            $this->session->set_flashdata('category_deleted', 'Category deleted');
+            redirect('categories');
+        }
+
         public function posts($id){
             $data['title'] = $this->category_model->get_category($id)->name;
 

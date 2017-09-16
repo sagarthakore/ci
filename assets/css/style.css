@@ -60,3 +60,13 @@ a.pagination-link{
 .create-form{
     max-width: 50%;
 }
+
+.categories-container{
+    max-width: 50%;
+}
+
+.comment-block{
+    background: #f4f4f4;
+    padding: 5px;
+    margin: 5px 0px;
+}

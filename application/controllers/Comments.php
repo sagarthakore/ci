@@ -17,4 +17,10 @@
                 redirect('posts/'.$slug);
             }
         }
+
+        public function delete($comment_id){
+            $slug = $this->input->post('slug');
+            $this->comment_model->delete_comment($comment_id);
+            redirect('posts/'.$slug);
+        }
     }

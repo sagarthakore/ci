@@ -31,6 +31,16 @@
             }
         }
 
+        public function get_user_name($user_id){
+            $result = $this->db->get_where('users', array('id' => $user_id, 'status' => 1));
+            return $result->row(0)->name;
+        }
+
+        public function get_user_email($user_id){
+            $result = $this->db->get_where('users', array('id' => $user_id, 'status' => 1));
+            return $result->row(0)->email;
+        }
+
         // Check if username exists
         public function check_username_exists($username){
             $query = $this->db->get_where('users', array('username' => $username, 'status' => 1));

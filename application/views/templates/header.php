@@ -34,9 +34,9 @@
                     <li>
                         <a href="<?php echo base_url(); ?>posts/create">Create Post</a>
                     </li>
-                    <li>
-                        <a href="<?php echo base_url(); ?>categories/create">Create Category</a>
-                    </li>
+<!--                    <li>-->
+<!--                        <a href="--><?php //echo base_url(); ?><!--categories/create">Create Category</a>-->
+<!--                    </li>-->
                     <li>
                         <a href="<?php echo base_url(); ?>users/logout">Logout</a>
                     </li>
@@ -61,6 +61,9 @@
             <?php endif; ?>
             <?php if($this->session->flashdata('category_created')): ?>
                 <?php echo '<p class="alert alert-success" align="center">'.$this->session->flashdata('category_created').'</p>'; ?>
+            <?php endif; ?>
+            <?php if($this->session->flashdata('category_deleted')): ?>
+                <?php echo '<p class="alert alert-danger" align="center">'.$this->session->flashdata('category_deleted').'</p>'; ?>
             <?php endif; ?>
             <?php if($this->session->flashdata('post_deleted')): ?>
                 <?php echo '<p class="alert alert-success" align="center">'.$this->session->flashdata('post_deleted').'</p>'; ?>
