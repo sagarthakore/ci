@@ -61,9 +61,9 @@
         </div>
     <?php endif; ?>
 </div>
-<?php if ($this->session->userdata('logged_in')): ?>
     <hr>
     <h3>Add Comments</h3>
+<?php if ($this->session->userdata('logged_in')): ?>
     <?php echo validation_errors(); ?>
     <div class="comments-form">
         <?php echo form_open('comments/create/' . $post['id']); ?>
@@ -76,7 +76,12 @@
         <button type="submit" class="btn btn-default">Submit</button>
         </form>
     </div>
+<?php else : ?>
+    <div class="comments-form-loggedout">
+        <p class="alert alert-warning" align="center">You must be signed in to comment. Click <a class="alert-link" href="<?php echo base_url(); ?>users/login">here</a> to sign in.</p>
+    </div>
 <?php endif; ?>
+
 
 	
 

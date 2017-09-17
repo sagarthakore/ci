@@ -17,7 +17,9 @@
                 <li><a href="<?php echo base_url(); ?>">Home</a></li>
                 <li><a href="<?php echo base_url(); ?>about">About</a></li>
                 <li><a href="<?php echo base_url(); ?>posts">Blog</a></li>
+                <?php if($this->session->userdata('admin')) : ?>
                 <li><a href="<?php echo base_url(); ?>categories">Categories</a></li>
+                <?php endif; ?>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 

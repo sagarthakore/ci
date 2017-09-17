@@ -55,6 +55,7 @@
                         'username' => $username,
                         'name' => $this->user_model->get_user_name($user_id),
                         'email' => $this->user_model->get_user_email($user_id),
+                        'admin' => $this->user_model->is_user_admin($user_id),
                         'logged_in' => true
                     );
 
@@ -82,6 +83,7 @@
             $this->session->unset_userdata('username');
             $this->session->unset_userdata('name');
             $this->session->unset_userdata('email');
+            $this->session->unset_userdata('admin');
 
             // Set Message
             $this->session->set_flashdata('user_loggedout', 'You have successfully logged out');

@@ -41,6 +41,15 @@
             return $result->row(0)->email;
         }
 
+        public function is_user_admin($user_id){
+            $result = $this->db->get_where('users', array('id' => $user_id, 'admin' => 1, 'status' => 1));
+            if($result->num_rows() == 1) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+
         // Check if username exists
         public function check_username_exists($username){
             $query = $this->db->get_where('users', array('username' => $username, 'status' => 1));

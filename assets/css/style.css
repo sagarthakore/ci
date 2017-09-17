@@ -70,3 +70,7 @@ a.pagination-link{
     padding: 5px;
     margin: 5px 0px;
 }
+
+.comments-form-loggedout{
+    max-width: 50%;
+}
